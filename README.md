@@ -73,10 +73,6 @@ Build JHash is very simple, just follow this guide which will explain the compil
   ``` Bash
   gradle jar
   ```
-  - Start Gradle build without all DEPENDENCIES
-  ``` Bash
-  gradle jar
-  ```
   - Start Gradle build with all DEPENDENCIES
   ``` Bash
   gradle fatJar
