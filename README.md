@@ -52,7 +52,40 @@ new JHash(new Md2sum(file)).execute((hex, bytes) -> System.out.println(hex));
 var file = new File("/home/jhash/archlinux-2018.05.01-x86_64.iso");
 System.out.println(new Sha1sum(file).getHex());
 ```  
-  
+## Build
+Build JHash is very simple, just follow this guide which will explain the compilation only for operating systems GNU/Linux (or Unix) based, no guaranteed support for windows
+
+**Requirements**
+  - Gradle installed in your machine (or use Gradle wrapper included in the project)
+  - Java 10 JDK installed correctly on your computer 
+ 
+**Build**
+  - Check Java version
+  ``` Bash
+  java --version
+  ```
+  - Clone JHash repository
+  ``` Bash
+  git clone https://github.com/ErnyTech/JHash.git
+  cd JHash
+  ```
+  - Start Gradle build without all DEPENDENCIES
+  ``` Bash
+  gradle jar
+  ```
+  - Start Gradle build without all DEPENDENCIES
+  ``` Bash
+  gradle jar
+  ```
+  - Start Gradle build with all DEPENDENCIES
+  ``` Bash
+  gradle fatJar
+  ```
+  - Go to JHash jars
+  ``` Bash
+  cd build/libs
+  ls
+  ```
 ## Copyright info
     JHash, an advanced Java (freedom) library for generate hash
     Copyright (C) 2018 Ernesto Castellotti
@@ -70,7 +103,7 @@ System.out.println(new Sha1sum(file).getHex());
     You should have received a copy of the GNU Lesser General Public License
     along with this program.  If not, contact the owner of copyrights
     
-# External Libraries used
+## External Libraries used
   - BLAKE2b (https://github.com/rfksystems/blake2b)
     Copyright owner: rfksystems
     License: Apache License, Version 2.0
