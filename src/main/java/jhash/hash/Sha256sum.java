@@ -1,90 +1,22 @@
 package jhash.hash;
 
-import jhash.JHashApi;
-import jhash.util.BytesToHex;
+import jhash.util.GenericMessageDigestSum;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
-public class Sha256sum implements JHashApi {
-    private File file;
-    private String text;
-    private final int BUFFER_SIZE = 8192;
+public class Sha256sum extends GenericMessageDigestSum {
+    private final static String ALGORITHM = "SHA-256";
 
     public Sha256sum(String text) {
-        this.text = text;
+        super(ALGORITHM, text);
     }
 
     public Sha256sum(File file) {
-        this.file = file;
+        super(ALGORITHM, file);
     }
 
     public Sha256sum(Path path) {
-        this.file = path.toFile();
-    }
-
-    @Override
-    public byte[] getBytes() {
-        return hash();
-    }
-
-    @Override
-    public String getHex() {
-        byte hash[] = hash();
-        var bytestohex = new BytesToHex(hash);
-        return bytestohex.toString();
-    }
-
-    private byte[] hash()  {
-        if (this.file != null) {
-            try {
-                return fileHash();
-            } catch (NoSuchAlgorithmException | IOException e) {
-               return null;
-            }
-        }
-
-        if (this.text != null) {
-            try {
-                return stringHash();
-            } catch (NoSuchAlgorithmException e) {
-                return null;
-            }
-        }
-
-        return null;
-    }
-
-    private byte[] fileHash() throws NoSuchAlgorithmException, IOException {
-        var digest = MessageDigest.getInstance("SHA-256");
-        var bis = new BufferedInputStream(new FileInputStream(this.file));
-        int cout;
-        byte[] buffer = new byte[this.BUFFER_SIZE];
-
-        while (true) {
-            cout = bis.read(buffer);
-
-            if (cout <= 0) {
-                break;
-            }
-
-            if (Thread.currentThread().isInterrupted()) {
-                return null;
-            }
-
-            digest.update(buffer, 0, cout);
-        }
-
-        bis.close();
-
-        return digest.digest();
-    }
-
-    private byte[] stringHash() throws NoSuchAlgorithmException {
-        var digest = MessageDigest.getInstance("SHA-256");
-        return digest.digest(this.text.getBytes(StandardCharsets.UTF_8));
+        super(ALGORITHM, path);
     }
 }

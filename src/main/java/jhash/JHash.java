@@ -2,6 +2,10 @@ package jhash;
 
 import jhash.util.BytesToHex;
 
+import java.security.Security;
+import java.util.ArrayList;
+import java.util.List;
+
 public class JHash {
     private JHashApi jHashApi;
     private Thread jHashThread;
