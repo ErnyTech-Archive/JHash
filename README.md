@@ -42,3 +42,8 @@ Hash algorithms currently supported:
 
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, contact the owner of copyrights
+    
+# External Libraries used
+  - BLAKE2b (https://github.com/rfksystems/blake2b)
+    Copyright owner: rfksystems
+    License: Apache License, Version 2.0
