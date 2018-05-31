@@ -1,8 +1,10 @@
-# JHash
+## JHash
 JHash, an advanced Java (freedom) library for generate hash
 
 JHash was created as a personal challenge to simplify hash generation in Java,
 includes both synchronous and asynchronous api to allow the user to choose the most optimized according to need.
+
+**Attention, this library only supports Java 10**
 
 Hash algorithms currently supported:
   - Blake2b 160
@@ -25,8 +27,33 @@ Hash algorithms currently supported:
 
   - Sha512
   
+## Examples
+
+**Get SHA256 hash hex encoded of "hello" (Sync request)**
+``` Java
+var hex = new Sha256sum("Hello").getHex();
+System.out.printf("%s\n", hex);
+```
+
+**Get Blake2B-384 hash hex encoded of file "/home/jhash/archlinux-2018.05.01-x86_64.iso" with java.nio (ASync request)**        
+``` Java
+var path = Paths.get("/home/jhash/archlinux-2018.05.01-x86_64.iso");
+new JHash(new Blake2b384sum(path)).execute((hex, bytes) -> System.out.println(hex));
+```  
+
+**Get MD2 hash hex encoded of file "/home/jhash/archlinux-2018.05.01-x86_64.iso" (ASync request)**        
+``` Java
+var file = new File("/home/jhash/archlinux-2018.05.01-x86_64.iso");
+new JHash(new Md2sum(file)).execute((hex, bytes) -> System.out.println(hex));
+```  
+
+**Get SHA-1 hash hex encoded of file "/home/jhash/archlinux-2018.05.01-x86_64.iso" (Sync request)**   
+``` Java
+var file = new File("/home/jhash/archlinux-2018.05.01-x86_64.iso");
+System.out.println(new Sha1sum(file).getHex());
+```  
   
-  # Copyright info
+## Copyright info
     JHash, an advanced Java (freedom) library for generate hash
     Copyright (C) 2018 Ernesto Castellotti
 
