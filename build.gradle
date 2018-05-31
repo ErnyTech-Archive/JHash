@@ -11,6 +11,9 @@ plugins {
     id 'java-library'
 }
 
+sourceCompatibility = 10
+targetCompatibility = 10
+
 dependencies {
     compile 'com.rfksystems:blake2b:1.0.0'
 }
