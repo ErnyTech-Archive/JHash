@@ -7,6 +7,7 @@ includes both synchronous and asynchronous api to allow the user to choose the m
 **Attention, this library only supports Java 10**
 
 Hash algorithms currently supported:
+``` Raw
   - Blake2b 160
 
   - Blake2b 256
@@ -26,6 +27,7 @@ Hash algorithms currently supported:
   - Sha384
 
   - Sha512
+```
   
 ## Examples
 
