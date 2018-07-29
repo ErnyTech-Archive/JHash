@@ -12,7 +12,6 @@ plugins {
 }
 
 sourceCompatibility = 1.8
-targetCompatibility = 10
 
 dependencies {
     compile 'com.rfksystems:blake2b:1.0.0'
