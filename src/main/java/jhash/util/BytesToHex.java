@@ -8,9 +8,9 @@ public class BytesToHex {
     }
 
     public String toString() {
-        var hexString = new StringBuilder();
+        StringBuilder hexString = new StringBuilder();
         for (byte aByte : this.bytes) {
-            var hex = Integer.toHexString(0xff & aByte);
+            String hex = Integer.toHexString(0xff & aByte);
             if (hex.length() == 1) hexString.append('0');
             hexString.append(hex);
         }

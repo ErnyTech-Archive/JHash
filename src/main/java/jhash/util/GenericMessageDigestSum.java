@@ -42,7 +42,7 @@ public class GenericMessageDigestSum implements JHashApi {
     @Override
     public String getHex() {
         byte hash[] = hash();
-        var bytestohex = new BytesToHex(hash);
+        BytesToHex bytestohex = new BytesToHex(hash);
         return bytestohex.toString();
     }
 
@@ -69,8 +69,8 @@ public class GenericMessageDigestSum implements JHashApi {
     }
 
     private byte[] fileHash() throws NoSuchAlgorithmException, IOException {
-        var digest = MessageDigest.getInstance(this.algorithm);
-        var bis = new BufferedInputStream(new FileInputStream(this.file));
+        MessageDigest digest = MessageDigest.getInstance(this.algorithm);
+        BufferedInputStream bis = new BufferedInputStream(new FileInputStream(this.file));
         int cout;
         byte[] buffer = new byte[this.BUFFER_SIZE];
 
@@ -94,7 +94,7 @@ public class GenericMessageDigestSum implements JHashApi {
     }
 
     private byte[] stringHash() throws NoSuchAlgorithmException {
-        var digest = MessageDigest.getInstance(this.algorithm);
+        MessageDigest digest = MessageDigest.getInstance(this.algorithm);
         return digest.digest(this.text.getBytes(StandardCharsets.UTF_8));
     }
 
